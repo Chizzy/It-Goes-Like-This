@@ -7,3 +7,5 @@ const playlistController = require('../controllers/playlistController')
 // USER ROUTES
 router.post('/api/user', userController.create)
 router.get('/api/user/:id', userController.show)
+router.patch('/api/user/:id', userController.update)
+router.put('/api/user/:id', userController.update)
