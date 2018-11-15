@@ -1,13 +1,23 @@
-import React, { Component } from 'react';
-import LogInPage from './components/LogInPage'
-import './App.css';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import HomePage from "./components/HomePage";
+import LogIn from "./components/LogIn";
+import NavBar from "./components/NavBar";
+import { createGlobalStyle } from "styled-components";
+import "./App.css";
 
 class App extends Component {
   render() {
     return (
-      <div>
-      <LogInPage />
-      </div>
+      <Router>
+        <div>
+          <NavBar />
+          <Switch>
+            <Route exact path="/login" component={LogIn} />
+            <Route path="/" component={HomePage} />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
