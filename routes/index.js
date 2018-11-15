@@ -6,3 +6,4 @@ const playlistController = require('../controllers/playlistController')
 
 // USER ROUTES
 router.get('/api/user', userController.index)
+router.post('/api/user', userController.create)

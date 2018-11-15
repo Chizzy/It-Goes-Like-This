@@ -6,5 +6,9 @@ const userController = {
             res.send(user)
         })
     },
-    
+    create: (req, res) => {
+        User.create(req.body).then((user) => {
+            res.send(user)
+        })
+    }
 }
