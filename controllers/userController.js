@@ -1,13 +1,13 @@
 const User = require('../models/User')
 
 const userController = {
-    index: (req, res) => {
-        User.find({}).then((user) => {
+    create: (req, res) => {
+        User.create(req.body).then((user) => {
             res.send(user)
         })
     },
-    create: (req, res) => {
-        User.create(req.body).then((user) => {
+    show: (req, res) => {
+        User.findById(req.params.id).populate('songs').populate('playlist').then((user) => {
             res.send(user)
         })
     }

@@ -5,5 +5,5 @@ const songsController = require('../controllers/songsController')
 const playlistController = require('../controllers/playlistController')
 
 // USER ROUTES
-router.get('/api/user', userController.index)
 router.post('/api/user', userController.create)
+router.get('/api/user/:id', userController.show)
