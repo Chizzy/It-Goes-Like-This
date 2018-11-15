@@ -20,6 +20,11 @@ const playlistController = {
             updatePlaylist.save()
             res.send(updatePlaylist)
         })
+    },
+    delete: (req, res) => {
+        Playlist.findByIdAndRemove(req.params.id).then(() => {
+            res.send(200)
+        })
     }
 }
 
