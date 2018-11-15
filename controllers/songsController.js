@@ -1,4 +1,4 @@
-const User = require
+const User = require('../models/User')
 const Songs = require('../models/Songs')
 
 const songsController = {
@@ -9,10 +9,10 @@ const songsController = {
     },
     create: (req, res) => {
         User.findById(req.params.id).then((user) => {
-            Songs.create(req.body).then((searchdSong) => {
-                user.songs.push(searchdSong)
+            Songs.create(req.body).then((searchedSong) => {
+                user.songs.push(searchedSong)
                 user.save()
-                res.send(searchdSong)
+                res.send(searchedSong)
             })
         })
     },
@@ -25,6 +25,11 @@ const songsController = {
         Songs.findByIdAndUpdate(req.params, req.body, {new: true}).then((updatedSong) => {
             updatedSong.save()
             res.send(updatedSong)
+        })
+    },
+    delete: (req, res) => {
+        Songs.findByIdAndRemove(req.params.id).then(() => {
+            res.send(200)
         })
     }
 }

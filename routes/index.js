@@ -17,3 +17,7 @@ router.post('/api/user/:id/songs', songsController.create)
 router.get('/api/songs/:id', songsController.show)
 router.patch('/api/songs/:id', songsController.update)
 router.put('/api/songs/:id', songsController.update)
+router.delete('/api/songs/:id', songsController.delete)
+
+// PLAYLIST ROUTES
+router.post('/api/user/:id/playlist', playlistController.create)
