@@ -20,6 +20,12 @@ const songsController = {
         Songs.findById(req.params.id).then((song) => {
             res.send(song)
         })
+    },
+    update: (req, res) => {
+        Songs.findByIdAndUpdate(req.params, req.body, {new: true}).then((updatedSong) => {
+            updatedSong.save()
+            res.send(updatedSong)
+        })
     }
 }
 
