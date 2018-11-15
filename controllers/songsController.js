@@ -8,12 +8,17 @@ const songsController = {
         })
     },
     create: (req, res) => {
-        User.findById(req.params).then((user) => {
+        User.findById(req.params.id).then((user) => {
             Songs.create(req.body).then((searchdSong) => {
                 user.songs.push(searchdSong)
                 user.save()
                 res.send(searchdSong)
             })
+        })
+    },
+    show: (req, res) => {
+        Songs.findById(req.params.id).then((song) => {
+            res.send(song)
         })
     }
 }
