@@ -22,3 +22,5 @@ router.delete('/api/songs/:id', songsController.delete)
 // PLAYLIST ROUTES
 router.post('/api/user/:id/playlist', playlistController.create)
 router.get('/api/user/:id/playlist/:id', playlistController.show)
+router.patch('/api/user/:id/playlist/:id', playlistController.update)
+router.put('/api/user/:id/playlist/:id', playlistController.update)

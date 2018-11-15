@@ -14,6 +14,12 @@ const playlistController = {
         Playlist.findById(req.params.id).then((playlist) => {
             res.send(playlist)
         })
+    },
+    update: (req, res) => {
+        Playlist.findByIdAndUpdate(req.params, req.body, {new: true}).then((updatePlaylist) => {
+            updatePlaylist.save()
+            res.send(updatePlaylist)
+        })
     }
 }
 
