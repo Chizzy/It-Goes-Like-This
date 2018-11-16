@@ -6,7 +6,7 @@ class NavBar extends Component {
   render() {
     return (
       <div>
-        <Link to="/">Home</Link>
+        <Link to="/">It Goes Like This</Link>
         <Link to="/login">Log In</Link>
         {/* <Link>Profile</Link>
         <Link>Search</Link>

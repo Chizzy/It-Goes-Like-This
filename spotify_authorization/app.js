@@ -1,31 +1,31 @@
-const express = require('express'); // Express web server framework
-const request = require('request'); // "Request" library
-const cors = require('cors');
-const querystring = require('querystring');
-const cookieParser = require('cookie-parser');
+var express = require('express'); // Express web server framework
+var request = require('request'); // "Request" library
+var cors = require('cors');
+var querystring = require('querystring');
+var cookieParser = require('cookie-parser');
 
-const client_id = ''; // Your client id
-const client_secret = ''; // Your secret
-const redirect_uri = ''; // Your redirect uri
+var client_id = ''; // Your client id
+var client_secret = ''; // Your secret
+var redirect_uri = ''; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
  * @param  {number} length The length of the string
  * @return {string} The generated string
  */
-const generateRandomString = (length) => {
-  const text = '';
-  const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+var generateRandomString = (length) => {
+  var text = '';
+  var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-  for (const i = 0; i < length; i++) {
+  for (var i = 0; i < length; i++) {
     text += possible.charAt(Math.floor(Math.random() * possible.length));
   }
   return text;
 };
 
-const stateKey = 'spotify_auth_state';
+var stateKey = 'spotify_auth_state';
 
-const app = express();
+var app = express();
 
 app.use(express.static(__dirname + '/public'))
   .use(cors())
@@ -33,11 +33,11 @@ app.use(express.static(__dirname + '/public'))
 
 app.get('/login', (req, res) => {
 
-  const state = generateRandomString(16);
+  var state = generateRandomString(16);
   res.cookie(stateKey, state);
 
   // your application requests authorization
-  const scope = 'user-read-private user-read-email';
+  var scope = 'user-read-private user-read-email';
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
@@ -54,9 +54,9 @@ app.get('/callback', (req, res) => {
   // your application requests refresh and access tokens
   // after checking the state parameter
 
-  const code = req.query.code || null;
-  const state = req.query.state || null;
-  const storedState = req.cookies ? req.cookies[stateKey] : null;
+  var code = req.query.code || null;
+  var state = req.query.state || null;
+  var storedState = req.cookies ? req.cookies[stateKey] : null;
 
   if (state === null || state !== storedState) {
     res.redirect('/#' +
@@ -65,7 +65,7 @@ app.get('/callback', (req, res) => {
       }));
   } else {
     res.clearCookie(stateKey);
-    const authOptions = {
+    var authOptions = {
       url: 'https://accounts.spotify.com/api/token',
       form: {
         code: code,
@@ -81,10 +81,10 @@ app.get('/callback', (req, res) => {
     request.post(authOptions, (error, response, body) => {
       if (!error && response.statusCode === 200) {
 
-        const access_token = body.access_token,
+        var access_token = body.access_token,
           refresh_token = body.refresh_token;
 
-        const options = {
+        var options = {
           url: 'https://api.spotify.com/v1/me',
           headers: {
             'Authorization': 'Bearer ' + access_token
@@ -98,7 +98,7 @@ app.get('/callback', (req, res) => {
         });
 
         // we can also pass the token to the browser to make requests from there
-        res.redirect('/#' +
+        res.redirect('http://localhost:3000/user/#' +
           querystring.stringify({
             access_token: access_token,
             refresh_token: refresh_token
@@ -116,8 +116,8 @@ app.get('/callback', (req, res) => {
 app.get('/refresh_token', (req, res) => {
 
   // requesting access token from refresh token
-  const refresh_token = req.query.refresh_token;
-  const authOptions = {
+  var refresh_token = req.query.refresh_token;
+  var authOptions = {
     url: 'https://accounts.spotify.com/api/token',
     headers: {
       'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64'))
@@ -131,7 +131,7 @@ app.get('/refresh_token', (req, res) => {
 
   request.post(authOptions, (error, response, body) => {
     if (!error && response.statusCode === 200) {
-      const access_token = body.access_token;
+      var access_token = body.access_token;
       res.send({
         'access_token': access_token
       });
