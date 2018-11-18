@@ -12,7 +12,7 @@ router.put('/api/user/:id', userController.update)
 router.delete('/api/user/:id', userController.delete)
 
 // SONGS ROUTES
-router.index('/api/user/:id/songs', songsController.index)
+router.get('/api/user/:id/songs', songsController.index)
 router.post('/api/user/:id/songs', songsController.create)
 router.get('/api/songs/:id', songsController.show)
 router.patch('/api/songs/:id', songsController.update)
@@ -25,3 +25,5 @@ router.get('/api/user/:id/playlist/:id', playlistController.show)
 router.patch('/api/user/:id/playlist/:id', playlistController.update)
 router.put('/api/user/:id/playlist/:id', playlistController.update)
 router.delete('/api/user/:id/playlist/:id', playlistController.delete)
+
+module.exports = router
