@@ -11,7 +11,8 @@ class NavBar extends Component {
     this.state = {
       loggedIn: params ? true : false,
       user: {
-        id: ""
+        id: "",
+        name: ''
       }
     };
     if (params) {
@@ -27,7 +28,8 @@ class NavBar extends Component {
     spotifyWebApi.getMe().then(response => {
       this.setState({
         user: {
-          id: response.id
+          id: response.id,
+          name: response.display_name
         }
       });
     });
@@ -38,8 +40,8 @@ class NavBar extends Component {
       <div>
         <Link to="/">It Goes Like This</Link>
         <Link to="/search">Search for Song</Link>
-        <a href="http://localhost:8888/login">Log In with Spotify</a>
-        <Link to={`/user/${this.state.user.id}`}>Profile</Link>
+        <a href="http://localhost:8888/login">{this.state.loggedIn ? 'Log Out' : 'Log In with Spotify'}</a>
+        <Link to={`/user/${this.state.user.id}`}>{this.state.loggedIn ? `${this.state.user.name}'s Profile` : null}</Link>
         {/* <Link>Sign Up</Link> */}
       </div>
     );

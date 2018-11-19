@@ -11,7 +11,7 @@ class UserPage extends Component {
       loggedIn: params ? true : false,
       user: {
         id: "",
-        name: "Testing",
+        name: "",
         image: [{}],
         playlist: []
       }
