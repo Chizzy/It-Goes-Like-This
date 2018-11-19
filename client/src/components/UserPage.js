@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import Spotify from "spotify-web-api-js";
 
 const spotifyWebApi = new Spotify();
@@ -7,33 +6,27 @@ const spotifyWebApi = new Spotify();
 class UserPage extends Component {
   constructor() {
     super();
-    const params = this.getHashParams();
+    const params = localStorage.getItem("token");
     this.state = {
-      loggedIn: params.access_token ? true : false,
+      loggedIn: params ? true : false,
       user: {
-        name: 'Testing',
+        id: "",
+        name: "Testing",
         image: [{}],
         playlist: []
       }
     };
-    if (params.access_token) {
-      spotifyWebApi.setAccessToken(params.access_token);
+    if (params) {
+      spotifyWebApi.setAccessToken(params);
     }
   }
 
-  getHashParams = () => {
-    var hashParams = {};
-    var e,
-      r = /([^&;=]+)=?([^&;]*)/g,
-      q = window.location.hash.substring(1);
-    while ((e = r.exec(q))) {
-      hashParams[e[1]] = decodeURIComponent(e[2]);
-    }
-    return hashParams;
-  };
+  componentDidMount() {
+    this.getUser();
+  }
 
   getUser = () => {
-    spotifyWebApi.getUser().then(response => {
+    spotifyWebApi.getMe().then(response => {
       this.setState({
         user: {
           name: response.display_name,

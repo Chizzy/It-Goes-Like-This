@@ -3,14 +3,7 @@ const request = require('express')
 const app = express()
 const routes = require('./routes/index')
 
-// const config = {
-//     client_id: '',
-//     redirect_uri: 'http://localhost:3000/callback',
-//     scope: 'me create_annotation manage_annotation vote',
-//     state: '',
-//     clientSecret: '',
-//     response: ''
-// }
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
