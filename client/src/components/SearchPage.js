@@ -1,12 +1,37 @@
 import React, { Component } from "react";
 import axios from "axios";
 import SearchResults from './SearchResults'
+import Spotify from "spotify-web-api-js";
+
+const spotifyWebApi = new Spotify();
 
 class SearchPage extends Component {
-  state = {
-    search: "",
-    results: []
-  };
+    constructor() {
+        super();
+        const params = localStorage.getItem("token");
+        this.state = {
+          loggedIn: params ? true : false,
+          user: {
+            id: "",
+            name: ''
+          },
+        search: '',
+        results: []
+        };
+        if (params) {
+          spotifyWebApi.setAccessToken(params);
+        }
+      }
+
+      getUser = () => {
+        spotifyWebApi.getMe().then(response => {
+          this.setState({
+            user: {
+              id: response.id,
+            }
+          });
+        });
+      };
 
   handleSearchInput = event => {
     const name = event.target.name;
@@ -22,7 +47,6 @@ class SearchPage extends Component {
     const url = `https://api.genius.com/search?q=${search}&access_token=${token}`;
     axios.get(url).then(response => {
       const results = response.data.response.hits
-      console.log(results)
       this.setState({results: results})
     }).catch(err => {
         console.log(err)

@@ -25,6 +25,7 @@ class UserPage extends Component {
     this.getUser();
   }
 
+
   getUser = () => {
     spotifyWebApi.getMe().then(response => {
       this.setState({
@@ -36,11 +37,13 @@ class UserPage extends Component {
     });
   };
 
+
+
   render() {
     return (
       <div>
         <div>
-          <img src={this.state.user.image} />
+          <img src={this.state.user.image} alt='user' />
         </div>
         <div>{this.state.user.name}</div>
       </div>

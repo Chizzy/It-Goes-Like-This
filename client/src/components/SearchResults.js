@@ -47,11 +47,9 @@ class Results extends Component {
             src={result.result.primary_artist.image_url}
             alt={result.result.title}
           />
-          <a>
             <h2 onClick={() => this.getTrack(i)}>
               {result.result.title}
             </h2>
-          </a>
           <h3>{result.result.primary_artist.name}</h3>
         </div>
       );
@@ -61,7 +59,7 @@ class Results extends Component {
       return (
         <div key={i}>
           <img src={song.album.images[0].url} alt={song.name} />
-          <a onClick={this.refreshPage} href={song.external_urls.spotify} target="_blank">
+          <a onClick={this.refreshPage} href={song.external_urls.spotify} target="_blank" rel="noopener noreferrer">
             <h2>{song.name}</h2>
           </a>
           <h3>{song.artists[0].name}</h3>

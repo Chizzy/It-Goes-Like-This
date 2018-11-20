@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Spotify from "spotify-web-api-js";
+import axios from 'axios'
 
 const spotifyWebApi = new Spotify();
 
@@ -20,7 +21,7 @@ class NavBar extends Component {
     }
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.getUser();
   }
 
@@ -35,11 +36,20 @@ class NavBar extends Component {
     });
   };
 
+getPlayedTracks = () => {
+  spotifyWebApi.getMyRecentlyPlayedTracks().then((response) => {
+    const token = localStorage.getItem('token')
+    axios.get('https://api.spotify.com/v1/me/player/recently-played', {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+  })
+}
+
   render() {
     return (
       <div>
         <Link to="/">It Goes Like This</Link>
-        <a href="http://localhost:8888/login">{this.state.loggedIn ? null : 'Log In with Spotify'}</a>
+        {this.state.loggedIn ? null : (<a href="http://localhost:8888/login">Log In with Spotify</a>)}
         <Link to="/search">{this.state.loggedIn ? 'Search for Song' : null}</Link>
         <Link to={`/user/${this.state.user.id}`}>{this.state.loggedIn ? `${this.state.user.name}'s Profile` : null}</Link>
         {/* <Link>Sign Up</Link> */}

@@ -3,15 +3,11 @@ const Schema = mongoose.Schema
 
 const User = new Schema ({
     name: String,
-    email: String,
-    songs: [{
+    image: String,
+    searchList: [{
         type: Schema.Types.ObjectId,
-        ref: 'Songs'
+        ref: 'SearchList'
     }],
-    playlist: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Playlist'
-    }]
 })
 
 module.exports = mongoose.model('User', User)
