@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Spotify from 'spotify-web-api-js'
 import axios from 'axios'
+import SearchResults from './SearchResults'
 
 const spotifyWebApi = new Spotify()
 
@@ -41,6 +42,7 @@ class MatchedSongs extends Component {
         //   });
         return (
             <div>
+                <SearchResults results={this.state.results} getTrack={()=>this.getTrack()}/>
                 {/* {matchedSongs} */}
             </div>
         );
