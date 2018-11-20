@@ -40,7 +40,7 @@ class NavBar extends Component {
       <div>
         <Link to="/">It Goes Like This</Link>
         <Link to="/search">Search for Song</Link>
-        <a href="http://localhost:8888/login">{this.state.loggedIn ? 'Log Out' : 'Log In with Spotify'}</a>
+        <a href="http://localhost:8888/login">{this.state.loggedIn ? null : 'Log In with Spotify'}</a>
         <Link to={`/user/${this.state.user.id}`}>{this.state.loggedIn ? `${this.state.user.name}'s Profile` : null}</Link>
         {/* <Link>Sign Up</Link> */}
       </div>

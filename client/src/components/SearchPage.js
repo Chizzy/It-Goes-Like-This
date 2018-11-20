@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Results from "./Results";
+import SearchResults from "./SearchResults";
+import MatchedSongs from "./MatchedSongs";
 
 class SearchPage extends Component {
   state = {
@@ -18,7 +19,7 @@ class SearchPage extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const token =
-      "";
+    //   "4OpkqABT62kdLT7vssjm2DV02S_3exUVRDNpr6xRA5MFAKjsFBbU4pu-IC4bBPtF";
     const search = this.state.search.replace(/\s/, "%20");
     const url = `https://api.genius.com/search?q=${search}&access_token=${token}`;
     axios.get(url).then(response => {
@@ -45,7 +46,8 @@ class SearchPage extends Component {
             <button type="submit">Search</button>
           </div>
           <div>
-            <Results results={this.state.results} />
+            <SearchResults results={this.state.results} />
+            <MatchedSongs results={this.state.results} />
           </div>
         </form>
       </div>
