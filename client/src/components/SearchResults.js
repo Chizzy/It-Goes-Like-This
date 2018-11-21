@@ -49,10 +49,6 @@ class Results extends Component {
     this.setState({ showMatchedSongs: !this.state.showMatchedSongs });
   };
 
-  refreshPage = () => {
-    window.location.reload();
-  };
-
   render() {
     const results = this.props.results.map((result, i) => {
       return (
@@ -86,7 +82,6 @@ class Results extends Component {
           />
           <div className="card-body">
             <a
-              onClick={this.refreshPage}
               href={song.external_urls.spotify}
               target="_blank"
               rel="noopener noreferrer"
