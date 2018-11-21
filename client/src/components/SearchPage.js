@@ -13,9 +13,9 @@ const SearchStyles = styled.div`
   align-items: center;
   flex-direction: column;
   text-align: center;
-    button {
-        margin-top: 1rem;
-    }
+  button {
+    margin-top: 1rem;
+  }
 `;
 
 class SearchPage extends Component {
@@ -75,21 +75,21 @@ class SearchPage extends Component {
       <SearchStyles>
         <form onSubmit={this.handleSubmit}>
           <div className="form-row align-items-center">
-          <div className="col-auto">
-          <label htmlFor="search">Song Stuck In Your Head? </label>
-            <input
-              type="text"
-              name="search"
-              placeholder="Enter lyrics here..."
-              value={this.state.search}
-              onChange={this.handleSearchInput}
-              className="form-control"
-            />
-          </div> 
+            <div className="col-auto">
+              <label htmlFor="search">Song Stuck In Your Head? </label>
+              <input
+                type="text"
+                name="search"
+                placeholder="Enter lyrics here..."
+                value={this.state.search}
+                onChange={this.handleSearchInput}
+                className="form-control"
+              />
+            </div>
           </div>
           <button type="submit" className="btn button-white col-auto">
-              Search
-            </button>
+            Search
+          </button>
         </form>
         <div>
           <SearchResults results={this.state.results} />

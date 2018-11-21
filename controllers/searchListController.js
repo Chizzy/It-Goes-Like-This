@@ -22,7 +22,9 @@ const searchListController = {
         })
     },
     update: (req, res) => {
-        SearchList.findByIdAndUpdate(req.params, req.body, {new: true}).then((updatedSearchList) => {
+        SearchList.findByIdAndUpdate(req.params, req.body, {
+            new: true
+        }).then((updatedSearchList) => {
             updatedSearchList.save()
             res.send(updatedSearchList)
         })

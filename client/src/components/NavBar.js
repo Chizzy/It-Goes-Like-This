@@ -6,7 +6,7 @@ import styled from "styled-components";
 const spotifyWebApi = new Spotify();
 
 const NavBarStyle = styled.div`
-@import url('https://fonts.googleapis.com/css?family=Fredoka+One|Monoton');
+  @import url("https://fonts.googleapis.com/css?family=Fredoka+One|Monoton");
   display: flex;
   background-color: black;
   justify-content: space-evenly;
@@ -27,8 +27,8 @@ const Logo = styled.div`
 `;
 
 const SpotifyButton = styled.div`
-@import url('https://fonts.googleapis.com/css?family=Fredoka+One|Monoton');
-font-family: 'Fredoka One', cursive;
+  @import url("https://fonts.googleapis.com/css?family=Fredoka+One|Monoton");
+  font-family: "Fredoka One", cursive;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -85,7 +85,9 @@ class NavBar extends Component {
               height="25"
               alt="spotify-logo"
             />
-            <a href="http://localhost:8888/login">Log In with Spotify</a>
+            <a href="https://spotify-auth-backend.herokuapp.com/login">
+              Log In with Spotify
+            </a>
           </SpotifyButton>
         )}
         {this.state.loggedIn ? (

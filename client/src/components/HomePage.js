@@ -5,8 +5,8 @@ import styled from "styled-components";
 const spotifyWebApi = new Spotify();
 
 const ParallaxSpace = styled.h2`
-@import url('https://fonts.googleapis.com/css?family=Fredoka+One|Monoton');
-font-family: 'Fredoka One', cursive;
+  @import url("https://fonts.googleapis.com/css?family=Fredoka+One|Monoton");
+  font-family: "Fredoka One", cursive;
   padding: 200px;
   text-align: center;
   color: white;
@@ -16,24 +16,25 @@ font-family: 'Fredoka One', cursive;
 `;
 
 const Parainner = styled.div`
-@import url('https://fonts.googleapis.com/css?family=Fredoka+One|Monoton');
-font-family: 'Fredoka One', cursive;
-padding: 300px;
-text-align: center;
-font-size: 3rem;
-font-weight: 700;
-text-shadow: 8px 8px 8px black;
-`
+  @import url("https://fonts.googleapis.com/css?family=Fredoka+One|Monoton");
+  font-family: "Fredoka One", cursive;
+  padding: 300px;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
+  text-shadow: 8px 8px 8px black;
+`;
 
 const Para = styled.div`
-background: url(https://media.giphy.com/media/y3QOvy7xxMwKI/giphy.gif) fixed;
-background-size: 100%;
-`
+  background: url(https://media.giphy.com/media/y3QOvy7xxMwKI/giphy.gif) fixed;
+  background-size: 100%;
+`;
 
 const Para2 = styled.div`
-background: url(https://media.giphy.com/media/5bivKwxhVzshNk2Rjw/giphy.gif) fixed;
-background-size: 100%;
-`
+  background: url(https://media.giphy.com/media/5bivKwxhVzshNk2Rjw/giphy.gif)
+    fixed;
+  background-size: 100%;
+`;
 
 class HomePage extends Component {
   constructor() {
@@ -88,13 +89,13 @@ class HomePage extends Component {
       <div>
         <Para>
           <Parainner>
-          Do you ever forget the title of a song that you can't get out of your head?
+            Do you ever forget the title of a song that you can't get out of
+            your head?
           </Parainner>
         </Para>
         <ParallaxSpace>Guess what...</ParallaxSpace>
         <Para2>
-          <Parainner>
-          </Parainner>
+          <Parainner />
         </Para2>
       </div>
     );

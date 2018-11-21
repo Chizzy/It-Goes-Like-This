@@ -9,13 +9,13 @@ const CardStyle = styled.div`
   color: black;
   width: 275px;
   margin-top: 2rem;
-    a {
-        text-decoration: none;
-        color: black;
-    }
-    h2:hover {
-        text-shadow: 5px 5px #85FFC7;
-    }
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  h2:hover {
+    text-shadow: 5px 5px #85ffc7;
+  }
 `;
 
 class Results extends Component {
@@ -107,7 +107,7 @@ class Results extends Component {
           <div>
             <h1>Matched Songs</h1>
             <div className="d-flex flex-wrap justify-content-center justify-content-around">
-            {matchedSongs}
+              {matchedSongs}
             </div>
           </div>
         ) : (
