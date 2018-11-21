@@ -1,7 +1,25 @@
 import React, { Component } from "react";
 import Spotify from "spotify-web-api-js";
+import styled from 'styled-components'
 
 const spotifyWebApi = new Spotify();
+
+const UserStyles = styled.div`
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One|Monoton');
+font-family: 'Fredoka One', cursive;
+font-size: 2rem;
+display: flex;
+flex-direction: column;
+align-items: center;
+`
+
+const UserImage = styled.div`
+  margin-top: 2rem;
+`
+
+const UserName = styled.div`
+margin-top: 2rem;
+`
 
 class UserPage extends Component {
   constructor() {
@@ -41,12 +59,12 @@ class UserPage extends Component {
 
   render() {
     return (
-      <div>
-        <div>
+      <UserStyles>
+        <UserImage>
           <img src={this.state.user.image} alt='user' />
-        </div>
-        <div>{this.state.user.name}</div>
-      </div>
+        </UserImage>
+        <UserName>{this.state.user.name}'s Search History</UserName>
+      </UserStyles>
     );
   }
 }
