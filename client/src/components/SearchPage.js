@@ -56,7 +56,7 @@ class SearchPage extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const token =
-      "";
+      "4UGvn3i1DXVbzwSw1nbtU_bA5ZaqLEfiTaHUqGqfQqR7OU9BaiWOrxU_yJeqcaBH";
     const search = this.state.search.replace(/\s/, "%20");
     const url = `https://api.genius.com/search?q=${search}&access_token=${token}`;
     axios
