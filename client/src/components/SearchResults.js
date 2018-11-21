@@ -42,8 +42,8 @@ class Results extends Component {
   render() {
     const results = this.props.results.map((result, i) => {
       return (
-        <div key={i}>
-          <img
+        <div className='card' key={i}>
+          <img className="card-img-top"
             src={result.result.primary_artist.image_url}
             alt={result.result.title}
           />

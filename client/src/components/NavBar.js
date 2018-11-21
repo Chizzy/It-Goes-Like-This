@@ -1,9 +1,23 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Spotify from "spotify-web-api-js";
-import axios from 'axios'
+import styled from "styled-components";
 
 const spotifyWebApi = new Spotify();
+
+const NavBarStyle = styled.div`
+@import url("https://fonts.googleapis.com/css?family=Monoton");
+  display: flex;
+  background-color: black;
+  justify-content: space-evenly;
+  font-family: 'Monoton', cursive;
+  font-size: 2rem;
+  text-align: center;
+   a {
+     text-decoration: none;
+     color: white;
+   }
+`;
 
 class NavBar extends Component {
   constructor() {
@@ -13,7 +27,7 @@ class NavBar extends Component {
       loggedIn: params ? true : false,
       user: {
         id: "",
-        name: ''
+        name: ""
       }
     };
     if (params) {
@@ -21,7 +35,7 @@ class NavBar extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getUser();
   }
 
@@ -36,24 +50,35 @@ class NavBar extends Component {
     });
   };
 
-getPlayedTracks = () => {
-  spotifyWebApi.getMyRecentlyPlayedTracks().then((response) => {
-    const token = localStorage.getItem('token')
-    axios.get('https://api.spotify.com/v1/me/player/recently-played', {
-      headers: { Authorization: `Bearer ${token}` }
-    })
-  })
-}
-
   render() {
     return (
-      <div>
-        <Link to="/">It Goes Like This</Link>
-        {this.state.loggedIn ? null : (<a href="http://localhost:8888/login">Log In with Spotify</a>)}
-        <Link to="/search">{this.state.loggedIn ? 'Search for Song' : null}</Link>
-        <Link to={`/user/${this.state.user.id}`}>{this.state.loggedIn ? `${this.state.user.name}'s Profile` : null}</Link>
-        {/* <Link>Sign Up</Link> */}
-      </div>
+      <NavBarStyle>
+        <div>
+        <img src="./images/favicon.ico" width="45" height="45" alt="logo" />
+          <Link to="/">
+            It Goes Like This
+          </Link>
+        </div>
+        {this.state.loggedIn ? (
+          <Link to="/search">
+            Search for Song
+          </Link>
+        ) : (
+          <a
+            href="http://localhost:8888/login"
+            className="btn btn-success btn-sm"
+            role="button"
+          >
+            <img src="./images/spotify-logo.png" width="25" height="25" alt="spotify-logo" />
+            Log In with Spotify
+          </a>
+        )}
+        {this.state.loggedIn ? (
+          <Link to={`/user/${this.state.user.id}`}>
+            Search History
+          </Link>
+        ) : null}
+      </NavBarStyle>
     );
   }
 }
