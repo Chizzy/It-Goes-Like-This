@@ -14,12 +14,15 @@ Even though this is suppose to be a MERN stack application, most of the back end
 
 ## Technologies Used
 
-* Mongoose/Mongodb, Express, React, Node.js
+* Mongoose/MongoDB, Express, React, Node.js
 * Spotify and Genius API
+* BootStrap
 * Project Planning - [Trello](https://trello.com/b/1iYwcRE9/wdi-project-3-it-goes-like-this#)
 * Wireframes - [Figma](https://www.figma.com/file/aLmUqoFOczHxskSaBqM4cSNR/It-Goes-Like-This?node-id=0%3A1)
 * ERD - [LucidChart](https://www.lucidchart.com/invitations/accept/b96ef709-87b0-432b-8a1c-f6ef3702c3b1)
 * Visual Studio Code
+* MondgoDB Compass
+* Postman
 
 ## Features
 
